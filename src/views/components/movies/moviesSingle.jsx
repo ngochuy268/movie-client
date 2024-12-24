@@ -11,7 +11,7 @@ const MoviesSingle = ({films}) => {
     useEffect(() => {
         document.title = `${film.name}`;
         window.scrollTo(0, 0);
-      }, []);
+    }, []);
 
     return (
         <>
@@ -31,7 +31,7 @@ const MoviesSingle = ({films}) => {
                                 <img src={require(`../../../images/uploads/${film.poster}`)} alt="" />
                                 <div className="movie-btn">	
                                     <div className="btn-transform transform-vertical red">
-                                        <div><a href="#" className="item item-1 redbtn"> <i className="ion-play"></i> Play</a></div>
+                                        <div><a href="https://drive.google.com/file/d/1Pl6UZiYNNA7gdnhsMKWaCwAPLUY0qi1L/view?usp=drive_link" className="item item-1 redbtn"> <i className="ion-play"></i> Play</a></div>
                                         <div><a href="https://drive.google.com/file/d/1Pl6UZiYNNA7gdnhsMKWaCwAPLUY0qi1L/view?usp=drive_link" className="item item-2 redbtn fancybox-media hvr-grow"><i className="ion-play"></i></a></div>
                                     </div>                                  
                                 </div>

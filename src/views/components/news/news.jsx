@@ -9,6 +9,7 @@ const News = ({news}) => {
 
     useEffect(() => {
         document.title = "News";
+        window.scrollTo(0, 0);
     })
 
     const {

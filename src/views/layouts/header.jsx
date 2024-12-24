@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../images/logo1.png';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useHeaderController from '../../controllers/Header/headerController';
 
 const Header = ({films}) => {
@@ -13,6 +13,46 @@ const Header = ({films}) => {
         setSearchTerm(''); 
         setSearchResults([]); 
     };
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [ignoreOutsideClick, setIgnoreOutsideClick] = useState(false);
+    const navbarRef = useRef(null);
+
+    const toggleNavbar = () => {
+        setIsOpen(prevState => !prevState);
+        setIgnoreOutsideClick(true);
+    };
+
+    const handleClickOutside = (event) => {
+        if (ignoreOutsideClick) {
+            setIgnoreOutsideClick(false); 
+            return;
+        }
+        if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+            setIsOpen(false);
+        }
+    };
+    
+    useEffect(() => {
+        if (navbarRef.current) {
+            const navbar = navbarRef.current;
+            if (isOpen) {
+                const scrollHeight = navbar.scrollHeight;
+                navbar.style.height = `${scrollHeight}px`;
+                navbar.style.opacity = 1;
+            } else {
+                navbar.style.height = '0';
+                navbar.style.opacity = 0;
+            }
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [ignoreOutsideClick]);
    
     return (
         <>
@@ -20,7 +60,7 @@ const Header = ({films}) => {
                 <div className="container">
                     <nav className="navbar navbar-default navbar-custom">
                             <div className="navbar-header logo">
-                                <div className="navbar-toggle"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <div className="navbar-toggle" onClick={toggleNavbar}>
                                     <span className="sr-only">Toggle navigation</span>
                                     <div id="nav-icon1">
                                         <span></span>
@@ -30,27 +70,21 @@ const Header = ({films}) => {
                                 </div>
                                 <Link to="/"><img className="logo" src={logo} alt="" width="119" height="58" /></Link>
                             </div>
-                            <div className="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                            <div ref={navbarRef} className={`collapse navbar-collapse flex-parent ${isOpen ? 'show' : ''}`}                             
+                            id="bs-example-navbar-collapse-1">
                                 <ul className="nav navbar-nav flex-child-menu menu-left">
                                     <li className="hidden">
                                         <a href="#page-top"></a>
                                     </li>
                                     <li className="dropdown first">
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/">
-                                        Home
-                                        </Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/">Home</Link>
                                     </li>
                                     <li className="dropdown first"> 
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/movies">
-                                        movies
-                                        </Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/movies">Movies</Link>
                                     </li>
                                     <li className="dropdown first">
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/news">
-                                        news
-                                        </Link>
-                                    </li>
-                                    
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/news">News</Link>
+                                    </li>                           
                                 </ul>
                             </div>
                     </nav>

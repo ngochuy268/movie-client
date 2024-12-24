@@ -35,7 +35,7 @@ const Home = ({films, news}) => {
                                  
                                 <div className="movie-item" key={index} style={{borderRadius: '10px !important'}}>
                                 <div className="mv-img" style={{borderRadius: '10px !important'}}>
-                                    <a href=""><img style={{borderRadius: '10px !important'}} src={require(`../../../images/uploads/${film.poster}`)} alt="" width="285" height="437" /></a>
+                                    <a href={`/${film.name.toLowerCase().replace(/\s+/g, '-')}`}><img  style={{borderRadius: '10px !important'}} src={require(`../../../images/uploads/${film.poster}`)} alt="" width="285" height="437" /></a>
                                 </div>
                                 <div className="title-in">
                                     <div className="cate">
