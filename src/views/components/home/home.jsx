@@ -5,7 +5,6 @@ import ava4 from '../../../images/uploads/ava4.jpg';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import useHomeController from '../../../controllers/Home/homeController';
-import { truncateContent } from '../../../models/Home/filmModel'; 
 import { settings, settings2 } from '../../../controllers/Home/sliderSettings';
 import { useEffect } from 'react';
 
@@ -13,12 +12,6 @@ import { useEffect } from 'react';
 const Home = ({films, news}) => {
 
     const { groupedFilms } = useHomeController(films);
-    const getRandomNews = (newsArray) => {
-        if (newsArray.length === 0) return null; 
-        const randomIndex = Math.floor(Math.random() * newsArray.length);
-        return newsArray[randomIndex];
-    };
-    const randomNews = getRandomNews(news);
 
     useEffect(() => {
         document.title = 'Home';
@@ -137,62 +130,6 @@ const Home = ({films, news}) => {
                                         </div>
                                     </div>
                                     <a href="#" className="btn">See all celebrities<i className="ion-ios-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="latestnew">
-                <div className="container">
-                    <div className="row ipad-width">
-                        <div className="col-md-8">
-                            <div className="title-hd">
-                                <h2>Latest news</h2>
-                            </div>
-                            <div className="tabs">                   
-                                <div className="tab-content">
-                                    <div id="tab31" className="tab active">
-                                        <div className="row">
-                                            <div className="blog-item-style-1">
-                                                <img src={require(`../../../images/uploads/${randomNews.image}`)} alt="" width="170" height="250"/>
-                                                <div className="blog-it-infor">
-                                                    <h3><Link to={`/news/${randomNews.title.toLowerCase().replace(/\s+/g, '-')}`}>{randomNews.title}</Link></h3>
-                                                    <span className="time">13 hours ago</span>
-                                                    <p>{truncateContent(randomNews.content, 300)}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="morenew">
-                                <div className="title-hd">
-                                    <h3>More news on Blockbuster</h3>
-                                    <a href="#" className="viewall">See all Movies news<i className="ion-ios-arrow-right"></i></a>
-                                </div>
-                                <div className="more-items">
-                                    <div className="left">
-                                        <div className="more-it">
-                                            <h6><a href="#">Michael Shannon Frontrunner to play Cable in “Deadpool 2”</a></h6>
-                                            <span className="time">13 hours ago</span>
-                                        </div>
-                                        <div className="more-it">
-                                            <h6><a href="#">French cannibal horror “Raw” inspires L.A. theater to hand out “Barf Bags”</a></h6>
-                                            
-                                            <span className="time">13 hours ago</span>
-                                        </div>
-                                    </div>
-                                    <div className="right">
-                                        <div className="more-it">
-                                            <h6><a href="#">Laura Dern in talks to join Justin Kelly’s biopic “JT Leroy”</a></h6>
-                                            <span className="time">13 hours ago</span>
-                                        </div>
-                                        <div className="more-it">
-                                            <h6><a href="#">China punishes more than 300 cinemas for box office cheating</a></h6>
-                                            <span className="time">13 hours ago</span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
