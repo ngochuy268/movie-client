@@ -4,55 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 import useHeaderController from '../../controllers/Header/headerController';
 
 const Header = ({films}) => {
-
-    const navigate = useNavigate();
-    const { searchTerm, searchResults, handleInputChange , setSearchTerm, setSearchResults } = useHeaderController(films);
-
-    const handleResultClick = (filmId) => {
-        navigate(`/${filmId}`);
-        setSearchTerm(''); 
-        setSearchResults([]); 
-    };
-
-    const [isOpen, setIsOpen] = useState(false);
-    const [ignoreOutsideClick, setIgnoreOutsideClick] = useState(false);
-    const navbarRef = useRef(null);
-
-    const toggleNavbar = () => {
-        setIsOpen(prevState => !prevState);
-        setIgnoreOutsideClick(true);
-    };
-
-    const handleClickOutside = (event) => {
-        if (ignoreOutsideClick) {
-            setIgnoreOutsideClick(false); 
-            return;
-        }
-        if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-            setIsOpen(false);
-        }
-    };
-    
-    useEffect(() => {
-        if (navbarRef.current) {
-            const navbar = navbarRef.current;
-            if (isOpen) {
-                const scrollHeight = navbar.scrollHeight;
-                navbar.style.height = `${scrollHeight}px`;
-                navbar.style.opacity = 1;
-            } else {
-                navbar.style.height = '0';
-                navbar.style.opacity = 0;
-            }
-        }
-    }, [isOpen]);
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [ignoreOutsideClick]);
+  
+    const {
+        searchTerm,
+        searchResults,
+        handleInputChange,
+        handleResultClick,
+        toggleNavbar,
+        navbarRef,
+        isOpen,
+    } = useHeaderController(films);
    
     return (
         <>
@@ -70,7 +31,7 @@ const Header = ({films}) => {
                                 </div>
                                 <Link to="/"><img className="logo" src={logo} alt="" width="119" height="58" /></Link>
                             </div>
-                            <div ref={navbarRef} className={`collapse navbar-collapse flex-parent ${isOpen ? 'show' : ''}`}                             
+                            <div ref={navbarRef}  className={`collapse navbar-collapse flex-parent ${isOpen ? 'show' : ''}`}                            
                             id="bs-example-navbar-collapse-1">
                                 <ul className="nav navbar-nav flex-child-menu menu-left">
                                     <li className="hidden">
@@ -118,3 +79,5 @@ const Header = ({films}) => {
 }
 
 export default Header;
+
+
