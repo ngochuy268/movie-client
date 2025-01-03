@@ -38,13 +38,13 @@ const Header = ({films}) => {
                                         <a href="#page-top"></a>
                                     </li>
                                     <li className="dropdown first">
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/">Home</Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/" onClick={() => setIsOpen(false)}>Home</Link>
                                     </li>
                                     <li className="dropdown first"> 
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/movies">Movies</Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/movies" onClick={() => setIsOpen(false)}>Movies</Link>
                                     </li>
                                     <li className="dropdown first">
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/news">News</Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/news" onClick={() => setIsOpen(false)}>News</Link>
                                     </li>                           
                                 </ul>
                             </div>
