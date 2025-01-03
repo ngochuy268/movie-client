@@ -9,7 +9,7 @@ const Header = ({films}) => {
         searchTerm,
         searchResults,
         handleInputChange,
-        handleResultClick,
+        handleSearchSubmit,
         toggleNavbar,
         navbarRef,
         isOpen,
@@ -39,40 +39,32 @@ const Header = ({films}) => {
                                         <a href="#page-top"></a>
                                     </li>
                                     <li className="dropdown first">
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/" onClick={() => setIsOpen(false)}>Home</Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/" onClick={() => {if (window.innerWidth <= 991) setIsOpen(false)}}>Home</Link>
                                     </li>
                                     <li className="dropdown first"> 
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/movies" onClick={() => setIsOpen(false)}>Movies</Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/movies" onClick={() => {if (window.innerWidth <= 991) setIsOpen(false)}}>Movies</Link>
                                     </li>
                                     <li className="dropdown first">
-                                        <Link className="btn btn-default dropdown-toggle lv1" to="/news" onClick={() => setIsOpen(false)}>News</Link>
+                                        <Link className="btn btn-default dropdown-toggle lv1" to="/news" onClick={() => {if (window.innerWidth <= 991) setIsOpen(false)}}>News</Link>
                                     </li>                           
                                 </ul>
                             </div>
                     </nav>
                     
                     <div className="top-search">                       
-                        <form>
+                        <form onSubmit={handleSearchSubmit}>
                             <input
                                 type="text"
                                 placeholder="Search for a movie..."
                                 value={searchTerm}
                                 onChange={handleInputChange}                       
-                            />                        
+                            />     
+                              <button type="submit" className="search-icon">
+                                🔍
+                            </button>                   
                         </form>
-                    </div>
-                    {searchResults.length > 0 && (
-                        <div className="search-results-dropdown" >
-                            {searchResults.map((film) => (
-                                <div key={film.id} 
-                                    className='search-results-dropdown-list'
-                                    onClick={() => handleResultClick(film.name.toLowerCase().replace(/\s+/g, '-'))}                                                                  
-                                >
-                                    <img src={require(`../../images/uploads/${film.poster}`)}/> <p>{film.name} ({film.releaseDate})</p>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                        
+                    </div>              
                 </div>
             </header> 
         </>

@@ -5,6 +5,7 @@ import Movies from "../views/components/movies/movies";
 import News from "../views/components/news/news";
 import MoviesSingle from "../views/components/movies/moviesSingle";
 import NewsSingle from "../views/components/news/newsSingle";
+import SearchPage from "../views/components/search/Search";
 
 const AppRoutes = ({ films, news }) => {
     return (
@@ -15,6 +16,7 @@ const AppRoutes = ({ films, news }) => {
                 <Route path="/news" element={<News news={news} />} />
                 <Route path="/:filmName" element={<MoviesSingle films={films} />} />
                 <Route path="/news/:newsTitle" element={<NewsSingle news={news} />} />
+                <Route path="/search" element={<SearchPage films={films} />} />
             </Route>
         </Routes>
     );

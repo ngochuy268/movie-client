@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const useHeaderController = (films) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [ignoreOutsideClick, setIgnoreOutsideClick] = useState(false);
     const navbarRef = useRef(null);
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const useHeaderController = (films) => {
     };
 
     const handleResize = () => {
-        if (window.innerWidth >= 768) {
+        if (window.innerWidth >= 992) {
             setIsOpen(true);
             if (navbarRef.current) {
                 const navbar = navbarRef.current;
@@ -56,6 +56,14 @@ const useHeaderController = (films) => {
         }
     };
 
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+        if (searchTerm.trim() !== '') {
+            navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+            setSearchTerm(''); 
+        }
+    };
+    
     const handleResultClick = (filmId) => {
         navigate(`/${filmId}`);
         setSearchTerm('');
@@ -77,6 +85,7 @@ const useHeaderController = (films) => {
     }, [isOpen]);
 
     useEffect(() => {
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -96,6 +105,7 @@ const useHeaderController = (films) => {
         searchResults,
         setSearchResults,
         handleInputChange,
+        handleSearchSubmit,
         handleResultClick,
         toggleNavbar,
         navbarRef,
