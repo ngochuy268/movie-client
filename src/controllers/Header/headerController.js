@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const useHeaderController = (films) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [ignoreOutsideClick, setIgnoreOutsideClick] = useState(false);
     const navbarRef = useRef(null);
     const navigate = useNavigate();
