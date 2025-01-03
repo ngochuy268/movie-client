@@ -26,11 +26,7 @@ const SearchPage = ({ films }) => {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="hero-ct">
-                                <h1>Movie Listing - List</h1>
-                                <ul className="breadcumb">
-                                    <li className="active"><a href="#">Home</a></li>
-                                    <li><span className="ion-ios-arrow-right"></span> Movie Listing</li>
-                                </ul>
+                                <h1>Search Result</h1>
                             </div>
                         </div>
                     </div>
