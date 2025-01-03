@@ -13,6 +13,7 @@ const Header = ({films}) => {
         toggleNavbar,
         navbarRef,
         isOpen,
+        setIsOpen
     } = useHeaderController(films);
    
     return (

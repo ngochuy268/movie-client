@@ -99,6 +99,7 @@ const useHeaderController = (films) => {
         handleResultClick,
         toggleNavbar,
         navbarRef,
+        setIsOpen,
         isOpen,
     };
 };
