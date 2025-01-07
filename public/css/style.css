@@ -5136,6 +5136,17 @@ ul {
   padding-bottom: 15px;
   border-bottom: 1px solid #405266;
 }
+
+.latest-update .sb-title {
+  font-family: 'Dosis', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #405266;
+}
 .sidebar .celebrities .celeb-item {
   margin-bottom: 30px;
   display: flex;
@@ -5946,6 +5957,55 @@ ul {
   max-height: 100px; /* Chiều cao tối đa hiển thị */
   overflow: hidden; /* Ẩn phần còn lại */
   position: relative; /* Để có thể sử dụng hiệu ứng */
+}
+
+.function-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.function-menu .func-btn {
+  padding: 5px;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.latest-update a:hover {
+  color: #dcf836 ;
+
+}
+
+.function-menu .func-btn:hover {
+  background-color: #0f2133;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.func-btn .func-icon {
+  padding: 0 10px 0 0;
+}
+
+.function-menu .func-btn:hover .func-icon {
+  color: #dcf836;
+}
+
+@media (max-width: 991px) {
+  .page-single.movie_play .container .ipad-width2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .latest-update {
+    margin-top: 40px;
+  }
 }
 
 .social-btn {

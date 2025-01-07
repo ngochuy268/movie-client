@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import useMoviesSingleController from '../../../controllers/Movies/moviesSingleController';
 
@@ -31,8 +31,8 @@ const MoviesSingle = ({films}) => {
                                 <img src={require(`../../../images/uploads/${film.poster}`)} alt="" />
                                 <div className="movie-btn">	
                                     <div className="btn-transform transform-vertical red">
-                                        <div><a href="https://drive.google.com/file/d/1Pl6UZiYNNA7gdnhsMKWaCwAPLUY0qi1L/view?usp=drive_link" className="item item-1 redbtn"> <i className="ion-play"></i> Play</a></div>
-                                        <div><a href="https://drive.google.com/file/d/1Pl6UZiYNNA7gdnhsMKWaCwAPLUY0qi1L/view?usp=drive_link" className="item item-2 redbtn fancybox-media hvr-grow"><i className="ion-play"></i></a></div>
+                                        <div><Link to={`/play`} className="item item-1 redbtn"> <i className="ion-play"></i> Play</Link></div>
+                                        <div><Link to={`/play`} className="item item-2 redbtn fancybox-media hvr-grow"><i className="ion-play"></i></Link></div>
                                     </div>                                  
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ const MoviesSingle = ({films}) => {
                                             <div id="overview" className="tab active">
                                                 <div className="row">
                                                     <div className="col-md-8 col-sm-12 col-xs-12">
-                                                        <p>{film.description}</p>                                    
+                                                        <p>{film.description}</p>  
                                                         <div className="title-hd-sm">
                                                             <h4>cast</h4>
                                                             <a href="#" className="time">Full Cast & Crew  <i className="ion-ios-arrow-right"></i></a>

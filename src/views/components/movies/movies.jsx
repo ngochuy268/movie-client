@@ -50,7 +50,7 @@ const Movies = ({ films }) => {
                             <div className="hero-ct">
                                 <h1>Movie Listing - List</h1>
                                 <ul className="breadcumb">
-                                    <li className="active"><a href="#">Home</a></li>
+                                    <li className="active"><Link to={`/`}>Movie</Link></li>
                                     <li><span className="ion-ios-arrow-right"></span> Movie Listing</li>
                                 </ul>
                             </div>
