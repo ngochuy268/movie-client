@@ -41,7 +41,7 @@ const Home = ({films, news}) => {
                                     <div className="cate">
                                         <span className="blue"><a href="#">{film.genre}</a></span>
                                     </div>
-                                    <h6><Link to={`/${film.name.toLowerCase().replace(/\s+/g, '-')}`}>{film.name}</Link></h6>
+                                    <h3><Link to={`/${film.name.toLowerCase().replace(/\s+/g, '-')}`}>{film.name}</Link></h3>
                                     <p><i className="ion-android-star"></i><span>{film.rate}</span> /10</p>
                                 </div>
                             </div>

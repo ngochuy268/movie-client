@@ -4134,14 +4134,22 @@ ul {
   position: absolute;
   width: 100%;
 }
-@media (max-width: 767px) {
-  .movie-items .movie-item .title-in h6 a{
+/* @media (max-width: 767px) {
+  .movie-items .movie-item .title-in h3 a{
     font-size: 13px !important;
   }
+} */
+.movie-items .movie-item .title-in h3 a {
+  font-family: 'Dosis', sans-serif;
+  /* font-size: 14px; */
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
 }
+
 .movie-items .movie-item .title-in h6 a {
   font-family: 'Dosis', sans-serif;
-  font-size: 14px;
+  /* font-size: 14px; */
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
