@@ -26,7 +26,7 @@ const MoviePlay = ({films}) => {
             <div className="page-single movie_play">
                 <div className="container">
                     <div className="row ipad-width2">
-                        <div className="col-md-8 col-sm-8 col-xs-8">
+                        <div className={isSmallScreen ? 'col-md-12 col-sm-12 col-xs-12' : 'col-md-8 col-sm-8 col-xs-8'}>
                             <video height="360" controls style={{ width: '100%' }}>
                                 <source src={videoUrl} type="video/mp4" />
                                 Your browser does not support the video tag.
@@ -62,7 +62,7 @@ const MoviePlay = ({films}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className={isSmallScreen ? 'col-md-8 col-sm-8 col-xs-8' : 'col-md-4 col-sm-4 col-xs-4'}>
+                        <div className={isSmallScreen ? 'col-md-12 col-sm-12 col-xs-12' : 'col-md-4 col-sm-4 col-xs-4'}>
                             <div className="latest-update">
                                 <h4 class="sb-title">most popular</h4>
                                 {randomFilms.map((f,index) =>(

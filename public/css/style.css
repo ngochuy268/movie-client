@@ -7218,8 +7218,12 @@ p.ceb-single {
   justify-content: center;
 }
 .slider .movie-item {
-  margin-right: 15px;
+  margin: 0 !important;
   padding: 0 15px;
+}
+
+.slider .slick-slider {
+  margin: 0 !important;
 }
 
 .slider .movie-item .mv-img {
@@ -8422,6 +8426,12 @@ footer .flex-parent-ft .flex-child-ft form {
   margin-bottom: 20px;
 }
 
+.recaptcha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 footer .contact-form .form-textarea {
   color: white;
   margin: 5px;
@@ -8434,6 +8444,12 @@ footer .contact-form button {
   border-radius: 7px;
   background-color: #0056b3;
   color: #abb7c4;
+  border: none;
+}
+
+footer .contact-form button:hover {
+  background-color: #dd003f;
+  color: white;
 }
 
 footer .flex-parent-ft .flex-child-ft form input {

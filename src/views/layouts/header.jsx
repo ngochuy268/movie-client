@@ -1,13 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo1.png';
-import { useEffect, useRef, useState } from 'react';
 import useHeaderController from '../../controllers/Header/headerController';
 
 const Header = ({films}) => {
   
     const {
         searchTerm,
-        searchResults,
         handleInputChange,
         handleSearchSubmit,
         toggleNavbar,

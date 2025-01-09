@@ -4,9 +4,8 @@ export const settings = {
     slidesToScroll: 4,
     arrows: false,
     draggable: true,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 2000,
-    dots: true,
     responsive: [
         {
             breakpoint: 1024,
@@ -63,8 +62,8 @@ export const settings2 = {
         {
             breakpoint: 480,
             settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToShow: 2,
+            slidesToScroll: 2
             }
         }
     ]

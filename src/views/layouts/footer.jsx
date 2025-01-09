@@ -2,10 +2,11 @@ import logo from '../../images/logo1.png';
 import { Form, Button, Row, Col } from 'react-bootstrap'; 
 import React, { useState } from 'react';
 import useFooterController from '../../controllers/Footer/footerController';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 const Footer = () => {
-    const { formData, handleChange, handleSubmit } = useFooterController();
+    const { formData, handleChange, handleSubmit, captchaRef, handleCaptchaChange } = useFooterController();
 
 
     return (
@@ -96,6 +97,13 @@ const Footer = () => {
                                             className='form-textarea'
                                         />
                                     </Form.Group>
+                                    <div className="recaptcha">
+                                        <ReCAPTCHA
+                                            ref={captchaRef}
+                                            sitekey="6LefuK4qAAAAAFSbFowPpF5psik_vqc5k3-nRQ8l"
+                                            onChange={handleCaptchaChange}
+                                        />
+                                    </div>
                                     <Button variant="primary" type="submit">
                                         Send Message
                                     </Button>

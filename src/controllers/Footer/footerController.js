@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { validateFormData } from '../../models/Footer/contactModel';
@@ -10,6 +10,8 @@ const useFooterController = () => {
         subject: '',
         message: ''
     });
+    const [captchaValue, setCaptchaValue] = useState(null);
+    const captchaRef = useRef(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,6 +19,10 @@ const useFooterController = () => {
             ...formData,
             [name]: value
         });
+    };
+
+    const handleCaptchaChange = (value) => {
+        setCaptchaValue(value);
     };
 
     const handleSubmit = (e) => {
@@ -27,7 +33,15 @@ const useFooterController = () => {
             return;
         }
 
-        axios.post(`${process.env.REACT_APP_API_URL}/api/contact`, formData)
+        if (!captchaValue) {
+            toast.error('Please verify that you are not a robot!');
+            return;
+        }
+
+        axios.post(`${process.env.REACT_APP_API_URL}/api/contact`, {
+            ...formData,
+            captcha: captchaValue
+        })
             .then(response => {
                 console.log('Success:', response.data);
                 toast.success('Message sent successfully!');
@@ -37,6 +51,7 @@ const useFooterController = () => {
                     subject: '',
                     message: ''
                 });
+                captchaRef.current.reset();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -47,7 +62,9 @@ const useFooterController = () => {
     return {
         formData,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        captchaRef,
+        handleCaptchaChange
     };
 };
 
