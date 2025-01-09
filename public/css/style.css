@@ -4149,7 +4149,7 @@ ul {
 
 .movie-items .movie-item .title-in h6 a {
   font-family: 'Dosis', sans-serif;
-  /* font-size: 14px; */
+  font-size: 14px;
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
