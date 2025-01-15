@@ -3,7 +3,7 @@ import { filterFilms, getGenres } from '../../models/Movies/movieModel';
 
 const useMoviesController = (films) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [filmsPerPage, setFilmsPerPage] = useState(3);
+    const [filmsPerPage, setFilmsPerPage] = useState(2);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [selectedRating, setSelectedRating] = useState('');
@@ -39,7 +39,42 @@ const useMoviesController = (films) => {
         }
     };
 
+    const getPaginationNumbers = () => {
+        const pages = [];     
+        pages.push(1);
+    
+        if (totalPages <= 5) {            
+            for (let i = 2; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else if (currentPage <= 3) {           
+            for (let i = 2; i <= 4; i++) {
+                pages.push(i);
+            }
+            if (totalPages > 4) {
+                pages.push('...');
+                pages.push(totalPages);
+            }
+        } else if (currentPage >= totalPages - 2) {
+          
+            pages.push('...');
+            for (let i = totalPages - 3; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {          
+            pages.push('...');
+            for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                pages.push(i);
+            }
+            pages.push('...');
+            pages.push(totalPages);
+        }
+    
+        return pages;
+    };
+
     return {
+        getPaginationNumbers,
         currentFilms,
         genres,
         handleSubmit,

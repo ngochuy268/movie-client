@@ -10,6 +10,7 @@ const Movies = ({ films }) => {
     })
  
     const {
+        getPaginationNumbers,
         currentFilms,
         genres,
         handleSubmit,
@@ -114,26 +115,26 @@ const Movies = ({ films }) => {
                                         setFilmsPerPage(Number(e.target.value));
                                         setCurrentPage(1);
                                     }}>
-                                        <option value="3">3 Movies</option>
-                                        <option value="10">10 Movies</option>
+                                        <option value="2">2 Movies</option>
+                                        <option value="5">5 Movies</option>
                                     </select>
                                     <div className="pagination2">
-                                        <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                                            &#9664;
-                                        </button>
-                                        <span>Page {currentPage} of {totalPages}:</span>
-                                        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-                                            &#9654;
-                                        </button>
-                                        {[...Array(totalPages)].map((_, index) => (
-                                            <a
-                                                key={index}
-                                                className={currentPage === index + 1 ? 'active' : ''}
-                                                onClick={() => setCurrentPage(index + 1)}
-                                            >
-                                                {index + 1}
-                                            </a>
-                                        ))}
+                                    <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                                        &#9664;
+                                    </button>
+                                    {getPaginationNumbers().map((page, index) => (
+                                        <a
+                                            key={index}
+                                            className={currentPage === page ? 'active' : ''}
+                                            onClick={() => page !== '...' && setCurrentPage(page)}
+                                            style={{ cursor: page === '...' ? 'default' : 'pointer' }}
+                                        >
+                                            {page}
+                                        </a>
+                                    ))}
+                                    <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+                                        &#9654;
+                                    </button>
                                     </div>
                                 </div>
                             )}
